@@ -1,11 +1,11 @@
-import { TModalX, TStoreItem, TStore, TSubscribeItem } from "./types";
+import { TWindowX, TStoreItem, TStore, TSubscribeItem } from "./types";
 
 let store: TStore = {
   windows: []
 };
 let subscribers: Set<TSubscribeItem> = new Set();
 
-const ModalX: TModalX = {
+const WindowX: TWindowX = {
   open(payload) {
     const isUnique = !(store.windows.some((item: TStoreItem) => item.id === payload.id));
         
@@ -29,4 +29,4 @@ const ModalX: TModalX = {
   },
 };
 
-export {ModalX};
+export {WindowX};

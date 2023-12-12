@@ -11,7 +11,7 @@ export type TStoreItem = {
 
 export type TSubscribeItem = () => void;
 
-export type TModalX = {
+export type TWindowX = {
     open: (payload: TStoreItem) => void,
     close: (id: string) => void,
     getSnapshot: () => void,
