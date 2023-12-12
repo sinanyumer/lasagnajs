@@ -11,7 +11,7 @@ export default [
 		output: [
 			{
 				file: pkg.main,
-				format: "esm"
+				format: "esm",
 			},
 		],
 		plugins: [

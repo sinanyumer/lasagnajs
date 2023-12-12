@@ -29,4 +29,4 @@ const ModalX: TModalX = {
   },
 };
 
-export default ModalX;
+export {ModalX};
