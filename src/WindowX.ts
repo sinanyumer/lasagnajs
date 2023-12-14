@@ -10,8 +10,10 @@ const WindowX: TWindowX = {
     const isUnique = !(store.windows.some((item: TStoreItem) => item.id === payload.id));
         
     if(isUnique) {
-        store.windows = [...store.windows, payload];
-        subscribers.forEach((callback: TSubscribeItem) => callback());
+      store = {
+        windows: [...store.windows, payload]
+      };
+      subscribers.forEach((callback: TSubscribeItem) => callback());
     }
   },
   close(id) {

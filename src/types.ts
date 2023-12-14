@@ -15,5 +15,5 @@ export type TWindowX = {
     open: (payload: TStoreItem) => void,
     close: (id: string) => void,
     getSnapshot: () => void,
-    subscribe: (callback: any) => void
+    subscribe: (callback: () => void) => any
 }

@@ -1,15 +1,15 @@
-// import Windows from "./Windows"
 import React from "react";
-import { useWindowSnapshot } from "./hooks";
+import { useSnapshot } from "./hooks";
 import { TStoreItem } from "./types";
+import { WindowX } from "./WindowX";
 
-const Container = (props: any) => {
-    const windows: any = useWindowSnapshot(props.controller);
+const Container = () => {
+    const {windows}: any = useSnapshot(WindowX);
 
     return (
         <div>
             {windows.map((window: TStoreItem) => (
-                <div>
+                <div key={window.id}>
                     {window.component}
                 </div>
             ))}

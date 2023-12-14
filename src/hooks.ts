@@ -1,7 +1,8 @@
 import { useContext, useSyncExternalStore } from "react";
 import { WindowContext } from "./context"
+import { TWindowX } from "./types";
 
-export function useWindowItem() {
+export function useWindow() {
     const context = useContext(WindowContext);
 
     if (context === undefined) {
@@ -12,10 +13,10 @@ export function useWindowItem() {
 }
   
 
-export function useWindowSnapshot(controller: any) {
+export function useSnapshot(WindowX: TWindowX) {
     const snapshot = useSyncExternalStore(
-        controller.subscribe.bind(controller),
-        controller.getSnapshot.bind(controller),
+        WindowX.subscribe.bind(WindowX),
+        WindowX.getSnapshot.bind(WindowX),
     );
   
     return snapshot;
