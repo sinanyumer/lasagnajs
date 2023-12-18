@@ -1,3 +1,3 @@
-export {WindowX} from './WindowX';
-export {Container} from './Container';
-export {useWindow, useSnapshot} from './hooks';
+export {WindowHandler} from './WindowHandler';
+export {WindowContainer} from './WindowContainer';
+export {useWindowContext, useWindowSnapshot} from './hooks';

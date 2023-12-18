@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export type TStore = {
-    windows: Array<TStoreItem>
+    windows: Array<TStoreItem & {onClose: (id: string) => void}>
 }
 
 export type TStoreItem = {
@@ -11,7 +11,7 @@ export type TStoreItem = {
 
 export type TSubscribeItem = () => void;
 
-export type TWindowX = {
+export type TWindowHandler = {
     open: (payload: TStoreItem) => void,
     close: (id: string) => void,
     getSnapshot: () => void,

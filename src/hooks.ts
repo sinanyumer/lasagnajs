@@ -1,22 +1,22 @@
 import { useContext, useSyncExternalStore } from "react";
 import { WindowContext } from "./context"
-import { TWindowX } from "./types";
+import { WindowHandler } from "./WindowHandler";
 
-export function useWindow() {
+export function useWindowContext() {
     const context = useContext(WindowContext);
 
     if (context === undefined) {
-        throw new Error("useWindowItem must be used within a WindowProvider");
+        throw new Error("useWindowContext must be used within a WindowProvider");
     }
   
     return context;
 }
   
 
-export function useSnapshot(WindowX: TWindowX) {
+export function useWindowSnapshot() {
     const snapshot = useSyncExternalStore(
-        WindowX.subscribe.bind(WindowX),
-        WindowX.getSnapshot.bind(WindowX),
+        WindowHandler.subscribe.bind(WindowHandler),
+        WindowHandler.getSnapshot.bind(WindowHandler),
     );
   
     return snapshot;
