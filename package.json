@@ -1,6 +1,6 @@
 {
   "name": "windowx",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Custom windows container for front-end web applications.",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
