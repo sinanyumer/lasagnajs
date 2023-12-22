@@ -37,9 +37,9 @@ const WindowHandler: TWindowHandler = {
   },
   subscribe (callback: TSubscribeItem) {
     subscribers.add(callback);
-
     return () => subscribers.delete(callback);
   },
 };
+
 
 export {WindowHandler};
