@@ -1,10 +1,15 @@
 import { ReactNode } from "react";
 
-export type TStore = {
-    windows: Array<TStoreItem>
+export type TStoreOptions = {
+    usePortal: boolean
 }
 
-export type TStoreItem = {
+export type TStore = {
+    windows: Array<TStoreWindow>,
+    options: TStoreOptions
+}
+
+export type TStoreWindow = {
     id: string,
     component: ReactNode,
     onClose: () => void
@@ -22,4 +27,8 @@ export type TWindowHandler = {
     close: (id: string) => void,
     getSnapshot: () => void,
     subscribe: (callback: () => void) => any
+}
+
+export type TWindowSnapshot = {
+    windows: TStore
 }

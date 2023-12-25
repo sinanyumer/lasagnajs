@@ -1,31 +1,26 @@
 import React from "react";
-import { WindowContext } from "./context"
 import { useWindowSnapshot } from "./hooks";
-import { TStoreItem } from "./types";
+import { TStoreOptions, TStoreWindow } from "./types";
+import ReactPortal from "./ReactPortal";
+import WindowsList from "./Windows";
+
 import './styles.css';
 
 const WindowContainer = () => {
-    const {windows}: any = useWindowSnapshot();
+    const {windows, options}: {
+        windows: Array<TStoreWindow>,
+        options: TStoreOptions
+    } = useWindowSnapshot();
 
-    if (windows.length) {
+    if (options.usePortal) {
         return (
-            <div className='window-container'>
-                {windows.map((window: TStoreItem) => (
-                    <WindowContext.Provider value={window as any} key={window.id}>
-                        <div className='window' onClick={(e) => {
-                            if (e.target === e.currentTarget) {
-                                window.onClose();
-                            }
-                        }}>
-                            {window.component}
-                        </div>
-                    </WindowContext.Provider>
-                ))}
-            </div>
+            <ReactPortal>
+                <WindowsList windows={windows} />
+            </ReactPortal>
         )
     }
 
-    return null;
+    return <WindowsList windows={windows} />
 }
 
 export {WindowContainer};

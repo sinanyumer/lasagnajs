@@ -1,6 +1,7 @@
 import { useContext, useSyncExternalStore } from "react";
 import { WindowContext } from "./context"
 import { WindowHandler } from "./WindowHandler";
+import { TWindowSnapshot } from "./types";
 
 export function useWindowContext() {
     const context = useContext(WindowContext);
@@ -19,5 +20,5 @@ export function useWindowSnapshot() {
         WindowHandler.getSnapshot.bind(WindowHandler),
     );
   
-    return snapshot;
+    return snapshot as any;
 }
