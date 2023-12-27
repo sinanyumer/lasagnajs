@@ -1,12 +1,10 @@
-import { TWindowHandler, TStore, TSubscribeItem, TStoreWindow } from "./types";
+import { TWindowHandler, TStoreWindow, TStore, TSubscriberItem } from "./types";
 
 let store: TStore = {
-  windows: [],
-  options: {
-    usePortal: true
-  }
+  windows: []
 };
-let subscribers: Set<TSubscribeItem> = new Set();
+
+let subscribers: Set<TSubscriberItem> = new Set();
 
 const WindowHandler: TWindowHandler = {
   open (payload) {
@@ -25,7 +23,7 @@ const WindowHandler: TWindowHandler = {
       };
     }
 
-    subscribers.forEach((callback: TSubscribeItem) => callback());
+    subscribers.forEach((callback: TSubscriberItem) => callback());
   },
   close (id) {
     const filteredWindows = store.windows.filter((window: TStoreWindow) => window.id !== id);
@@ -35,16 +33,16 @@ const WindowHandler: TWindowHandler = {
       windows: filteredWindows
     };
 
-    subscribers.forEach((callback: TSubscribeItem) => callback());
+    subscribers.forEach((callback: TSubscriberItem) => callback());
   },
   getSnapshot () {
     return store;
   },
-  subscribe (callback: TSubscribeItem) {
+  subscribe (callback: TSubscriberItem) {
     subscribers.add(callback);
+
     return () => subscribers.delete(callback);
   },
 };
-
 
 export {WindowHandler};

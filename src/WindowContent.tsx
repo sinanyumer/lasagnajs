@@ -1,9 +1,9 @@
 import React from "react";
 import { WindowContext } from "./context";
-import { TStoreWindow } from "./types";
+import { TStore, TStoreWindow } from "./types";
 
-const Windows = ({windows}: {windows: Array<TStoreWindow>}) => {
-    if (windows?.length) {
+const WindowContent: React.FC<TStore> = ({windows}) => {
+    if (windows.length) {
         return (
             <div className='window-container'>
                 {windows.map((window: TStoreWindow) => (
@@ -25,4 +25,4 @@ const Windows = ({windows}: {windows: Array<TStoreWindow>}) => {
     return null;
 }
 
-export default Windows;
+export default WindowContent;

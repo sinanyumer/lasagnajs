@@ -1,26 +1,27 @@
 import React from "react";
 import { useWindowSnapshot } from "./hooks";
-import { TStoreOptions, TStoreWindow } from "./types";
+import { TStore, TWindowContainer } from "./types";
 import ReactPortal from "./ReactPortal";
-import WindowsList from "./Windows";
+import WindowContent from "./WindowContent";
 
 import './styles.css';
 
-const WindowContainer = () => {
-    const {windows, options}: {
-        windows: Array<TStoreWindow>,
-        options: TStoreOptions
-    } = useWindowSnapshot();
+const WindowContainer: React.FC<TWindowContainer> = ({
+    config = {
+        usePortal: false
+    }
+}) => {
+    const {windows}: TStore = useWindowSnapshot();
 
-    if (options.usePortal) {
+    if (config.usePortal) {
         return (
             <ReactPortal>
-                <WindowsList windows={windows} />
+                <WindowContent windows={windows} />
             </ReactPortal>
         )
     }
 
-    return <WindowsList windows={windows} />
+    return <WindowContent windows={windows} />
 }
 
 export {WindowContainer};
