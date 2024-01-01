@@ -1,6 +1,6 @@
 {
   "name": "lasagnajs",
-  "version": "1.0.0",
+  "version": "1.0.0-a",
   "description": "Custom windows container for reactjs applications.",
   "main": "dist/index.ts",
   "types": "dist/index.d.ts",
